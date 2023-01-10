@@ -1,0 +1,193 @@
+﻿<%@ Master Language="vb" MasterPageFile="~/PlantillasMaster/Base.Master" CodeFile="~/PlantillasMaster/Principal.Master.vb" Inherits="Principal" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="base_title" runat="server">
+    <asp:ContentPlaceHolder ID="title" runat="server">
+        title - principal.Master
+    </asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="base_head" runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server" />
+    <style type="text/css">
+        /* ====== Header ====== */
+        .Linea {
+            /*background: #E2BA14;*/
+            color: rgba(255, 255, 255, 0.85);
+            border-top: 5px solid #1C4C8A;
+            /*padding: 30px 0;*/
+        }
+    </style>
+    <style type="text/css">
+        .cont {
+            position: relative;
+            height: 100%;
+            background-image: url(../Img/FondoBann2.png);
+            background-size: cover;
+            /*overflow: auto;*/
+            font-family: "Open Sans", Helvetica, Arial, sans-serif;
+        }
+    </style>
+</asp:Content>
+
+<%--Contenedor--%>
+<asp:Content ID="Content3" ContentPlaceHolderID="base_header" runat="server">
+    <div class="cont">
+        <%---------------------------------------------sub Contenedor encabezado principal--%>
+        <asp:ContentPlaceHolder ID="main_title" runat="server">
+          
+        </asp:ContentPlaceHolder>
+        <%---------------------------------------------sub Contenedor encabezado principal--%>
+        <asp:ContentPlaceHolder ID="Header" runat="server">
+           
+        </asp:ContentPlaceHolder>
+        <%---------------------------------------------sub Contenedor encabezado principal--%>
+        <asp:ContentPlaceHolder ID="Main_Texto" runat="server">
+            Main_Texto
+        </asp:ContentPlaceHolder>
+    </div>
+    <%---------------------------------------------sub Contenedor encabezado principal--%>
+    <asp:ContentPlaceHolder ID="navbar" runat="server">
+        <div style="background-color: #1C4C8A">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="../Form/Menu.aspx" title="Inicio"><i class="fa fa-home"></i></a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <asp:Panel ID="pnAsignar" runat="server" Visible="false">
+                            <ul class="nav navbar-nav">
+                                <li id="li1" runat="server"><a href="../Form/Asignar.aspx">Asignar responsables</a></li>
+                            </ul>
+                        </asp:Panel>
+                        <asp:Panel ID="pnSeguimiento" runat="server" Visible="false">
+                            <ul class="nav navbar-nav">
+                                <li id="li2" runat="server"><a href="../Form/Seguimiento.aspx">Seguimiento</a></li>
+                            </ul>
+                        </asp:Panel>
+                         <asp:Panel ID="pnPagos" runat="server" Visible="false">
+                             <ul class="nav navbar-nav">
+                                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pagos<span class="caret"></span></a>
+                                     <ul class="dropdown-menu">
+                                         <li id="MenuImprentaSol" runat="server"><a href="../Form/Pagos.aspx">Pagos principal</a></li>
+                                         <li id="MenuImprentaLog" runat="server"><a href="../Form/PagosHistorial.aspx">Historial de cargas</a></li>
+                                         <li id="MenuImprentaPre" runat="server"><a href="../Form/PagosCargas.aspx">Cargas masivas</a></li>
+                                     </ul>
+                                 </li>
+                             </ul>
+                        </asp:Panel>
+                         <asp:Panel ID="pnEventos" runat="server" Visible="false">
+                            <ul class="nav navbar-nav">
+                                <li id="li6" runat="server"><a href="../Form/Eventos.aspx">Eventos</a></li>
+                            </ul>
+                        </asp:Panel>
+                        <asp:Panel ID="pnBitacora" runat="server" Visible="false">
+                            <ul class="nav navbar-nav">
+                                <li id="li3" runat="server"><a href="../Form/Bitacora.aspx">Bitácora</a></li>
+                            </ul>
+                        </asp:Panel>
+                        <asp:Panel ID="pnInforme" runat="server" Visible="false">
+                            <ul class="nav navbar-nav">
+                                <li id="li4" runat="server"><a href="../Form/Informes.aspx">Informes</a></li>
+                            </ul>
+                        </asp:Panel>
+                        <asp:Panel ID="pnConfig" runat="server" Visible="false">
+                            <ul class="nav navbar-nav">
+                                <li id="li5" runat="server"><a href="../Form/Configuracion.aspx">Configuración</a></li>
+                            </ul>
+                        </asp:Panel>
+
+                        <ul class="nav navbar-nav navbar-center">
+                            <li class="nav navbar-nav"><a href="../Inicio/SelectCampus.aspx" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                 <asp:Label ID="lblCampus" runat="server"></asp:Label></a>
+                            </li>
+                        </ul>
+
+                        <%--<ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <asp:Image ID="Image1" ImageUrl="~/Img/Usersinfoto.png" runat="server" Width="25px" Height="25px" CssClass="img-circle" />
+                                <asp:Label ID="UsuarioLabelLogin" runat="server"></asp:Label>
+                                <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="*"><i class="fa fa-book" aria-hidden="true"></i>&nbsp;Manual</a></li>
+                                    <li><a href="../Inicio/SelectCampus.aspx"><i class="fa fa-building" aria-hidden="true"></i>&nbsp;Cambiar Campus</a></li>
+                                    <li><a href="../Inicio/Login.aspx"><i class="fa fa-power-off" aria-hidden="true"></i>&nbsp;Cerrar Sesion</a></li>
+                                </ul>
+                            </li>
+                        </ul>--%>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
+        </div>
+    </asp:ContentPlaceHolder>
+</asp:Content>
+
+<%--Contenedor--%>
+<asp:Content ID="Content5" ContentPlaceHolderID="base_pagination" runat="server">
+    <asp:ContentPlaceHolder ID="Main_pagination" runat="server">
+        Main_pagination
+    </asp:ContentPlaceHolder>
+</asp:Content>
+
+<%--Contenedor--%>
+<asp:Content ID="Content4" ContentPlaceHolderID="base_main_content" runat="server">
+    <asp:ContentPlaceHolder ID="main_content" runat="server">
+        <div class="TContent blueSection">
+            <form id="Form1" class="form-horizontal" runat="server" style="max-height: 100%">
+                <%-- ------------------- sub Contenedor -------------------%>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
+                <%-- Scrip para notificaciones --%>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        var username;
+                        var TipoNoti;
+                        username = '<%=Session("NombreVariable")%>';
+                        TipoNoti = '<%=Session("TipoNotificacion")%>';
+                        if (username == "Notificacion") {
+                            switch (TipoNoti) {
+                                case '1': swal("Éxito!", "<%=Session("Msg")%>", "success");
+                                    break;
+                                case '2': swal("Información!", "<%=Session("Msg")%>", "info");
+                                    break;
+                                case '3': swal("Advertencia!", "<%=Session("Msg")%>", "warning");
+                                    break;
+                                case '4': swal("Error!", "<%=Session("Msg")%>", "error");
+                                    break;
+                                    //case tres: alert("ok  3");
+                                    //    break;
+
+                                default: swal("Error!", "Atención!: No registra Ninguna Acción por favor consultar con el administrador", "error");
+                            }
+                            <%
+                    'Eliminar Variable de Session:
+                    Session.Contents.Remove("NombreVariable")
+                    Session.Contents.Remove("Msg")
+                    Session.Contents.Remove("TipoNoti")
+         %>
+                        }
+                    });
+                </script>
+            </form>
+        </div>
+    </asp:ContentPlaceHolder>
+</asp:Content>
+
+<%--Contenedor--%>
+<asp:Content ContentPlaceHolderID="base_footer" ID="footer" runat="server">
+    <div class="footer2 text-center">
+    </div>
+</asp:Content>
+
+
+
+
+
+
+
+

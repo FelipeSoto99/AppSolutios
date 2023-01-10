@@ -1,0 +1,130 @@
+﻿<%@ Master Language="vb" MasterPageFile="~/PlantillasMaster/Base.Master" CodeFile="~/PlantillasMaster/Secundario.Master.vb" Inherits="Secundario" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="base_title" runat="server">
+    <asp:ContentPlaceHolder ID="title" runat="server">
+        title - principal.Master
+    </asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="base_head" runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server" />
+    <style type="text/css">
+        /* ====== Header ====== */
+        .Linea {
+            /*background: #E2BA14;*/
+            color: rgba(255, 255, 255, 0.85);
+            border-top: 5px solid #1C4C8A;
+            /*padding: 30px 0;*/
+        }
+    </style>
+    <style type="text/css">
+        .cont {
+            position: relative;
+            height: 100%;
+            background-image: url(../Img/FondoBann2.png);
+            background-size: cover;
+            /*overflow: auto;*/
+            font-family: "Open Sans", Helvetica, Arial, sans-serif;
+        }
+    </style>
+</asp:Content>
+
+
+<%--Contenedor--%>
+<asp:Content ID="Content3" ContentPlaceHolderID="base_header" runat="server">
+    <div class="cont">
+        <%---------------------------------------------sub Contenedor encabezado principal--%>
+        <asp:ContentPlaceHolder ID="main_title" runat="server">
+            <div class="Linea">
+            </div>
+        </asp:ContentPlaceHolder>
+        <%---------------------------------------------sub Contenedor encabezado principal--%>
+        <asp:ContentPlaceHolder ID="Header" runat="server">
+            <div class="row">
+                <div class="col-lg-3">
+                    <br />
+                    <br />
+                </div>
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-1">
+                </div>
+            </div>
+        </asp:ContentPlaceHolder>
+        <%---------------------------------------------sub Contenedor encabezado principal--%>
+        <asp:ContentPlaceHolder ID="Main_Texto" runat="server">
+            Main_Texto
+        </asp:ContentPlaceHolder>
+    </div>
+    <%---------------------------------------------sub Contenedor encabezado principal--%>
+    <asp:ContentPlaceHolder ID="navbar" runat="server">
+        <div style="background-color: #1C4C8A">
+            <nav class="navbar navbar-default" style="background-color: #EAEAEF">
+            </nav>
+        </div>
+    </asp:ContentPlaceHolder>
+</asp:Content>
+
+
+<%--Contenedor--%>
+<asp:Content ID="Content5" ContentPlaceHolderID="base_pagination" runat="server">
+    <asp:ContentPlaceHolder ID="Main_pagination" runat="server">
+        Main_pagination
+    </asp:ContentPlaceHolder>
+</asp:Content>
+
+
+<%--Contenedor--%>
+<asp:Content ID="Content4" ContentPlaceHolderID="base_main_content" runat="server">
+    <asp:ContentPlaceHolder ID="main_content" runat="server">
+        <div class="TContent blueSection">
+            <form id="Form1" class="form-horizontal" runat="server" style="max-height: 100%">
+                <%-- ------------------- sub Contenedor -------------------%>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
+                <%-- Scrip para notificaciones --%>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        var username;
+                        var TipoNoti;
+                        username = '<%=Session("NombreVariable")%>';
+                        TipoNoti = '<%=Session("TipoNotificacion")%>';
+                        if (username == "Notificacion") {
+                            switch (TipoNoti) {
+                                case '1': swal("Éxito!", "<%=Session("Msg")%>", "success");
+                                    break;
+                                case '2': swal("Información!", "<%=Session("Msg")%>", "info");
+                                    break;
+                                case '3': swal("Advertencia!", "<%=Session("Msg")%>", "warning");
+                                    break;
+                                case '4': swal("Error!", "<%=Session("Msg")%>", "error");
+                                    break;
+                                    //case tres: alert("ok  3");
+                                    //    break;
+
+                                default: swal("Error!", "Atención!: No registra Ninguna Acción por favor consultar con el administrador", "error");
+                            }
+                            <%
+                    'Eliminar Variable de Session:
+                    Session.Contents.Remove("NombreVariable")
+                    Session.Contents.Remove("Msg")
+                    Session.Contents.Remove("TipoNoti")
+         %>
+                        }
+                    });
+                </script>
+                <%-- FIN  Scrip para notificaciones --%>
+            </form>
+        </div>
+    </asp:ContentPlaceHolder>
+</asp:Content>
+
+
+<%--Contenedor--%>
+<asp:Content ContentPlaceHolderID="base_footer" ID="footer" runat="server">
+    <div class="footer2 text-center">
+       
+        <span id="siteseal">
+        </span>
+    </div>
+</asp:Content>
+

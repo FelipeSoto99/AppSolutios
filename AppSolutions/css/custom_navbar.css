@@ -1,0 +1,81 @@
+﻿.navbar-default {
+  background-color:#003366;
+  border-color:transparent;
+}
+
+/*Color Icono Casa*/
+.navbar-default .navbar-brand {
+  color: #BDBDBD;
+}
+
+/*Color Icono Casa cuando pasa el cursor*/
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #808080;
+}
+.navbar-default .navbar-text {
+  color: #ecf0f1;
+}
+
+/*Color letras del menu*/
+.navbar-default .navbar-nav > li > a {
+  color: #BDBDBD;
+}
+
+/*Color letra cuando pasa el cursor*/
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #808080;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #bad7ef;
+  background-color: #B18904;
+}
+
+/*Color fondo para el sub Menu*/
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+    /*color letra*/ 
+  color: #bad7ef;
+    /*color fondo sub menu*/
+  background-color: #4682B4;
+}
+.navbar-default .navbar-toggle {
+  border-color: #B18904;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #B18904;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #1C4C8A;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #1C4C8A;
+}
+.navbar-default .navbar-link {
+  color: #1C4C8A;
+}
+.navbar-default .navbar-link:hover {
+  color: #bad7ef;
+}
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #1C4C8A;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #bad7ef;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #bad7ef;
+    background-color: #B18904;
+  }
+}
