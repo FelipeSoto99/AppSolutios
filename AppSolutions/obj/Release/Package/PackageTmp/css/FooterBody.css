@@ -1,0 +1,45 @@
+
+
+/* ======= Base ======= */
+body {
+  font-family: 'Open Sans', arial, sans-serif;
+  color: #494d55;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+html,
+body {
+  height: 100%;
+}
+.page-wrapper {
+  min-height: 100%;
+  /* equal to footer height */
+  /*igual a la altura del pie de página*/ 
+  margin-bottom: -115px;
+}
+.page-wrapper:after {
+  content: "";
+  display: block;
+  height: 115px;
+}
+.footer2 {
+  height: 115px;
+}
+
+/* ====== Footer ====== */
+
+*.footer2 {
+  background: #072041;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 15px 0;
+}
+.footer2 a {
+  color: #40babd;
+}
+.footer2 .fa-heart {
+  color: #EA5395;
+}
+
+
+

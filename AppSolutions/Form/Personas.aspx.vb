@@ -5,6 +5,7 @@
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not Page.IsPostBack Then
             Buscar()
+            TipoIdentificacion()
         End If
 
     End Sub
@@ -40,6 +41,7 @@
     End Sub
 
     Public Sub Crear()
+        Dim FechaVenc As String = ""
         If Trim(txtNombreAdd.Text) = "" Or Trim(txtapellidoAdd.Text) = "" Or Trim(txtNumIdentificacionAdd.Text) = "" Or ddlTipoIdentificacionAdd.SelectedIndex = 0 Or
              Trim(txtTelefonoAdd.Text) = "" Or Trim(txtNumLicencia.Text) = "" Or dtpFechaVenc.Value = "" Then
             ObjUniversal.SendNotify("Todos los campos son obligatorios", 3)
@@ -53,9 +55,13 @@
             mensaje = "Se ha modificado los datos del registro con éxito"
         End If
 
+        If Len(Trim(dtpFechaVenc.Value)) > 8 Then
+            FechaVenc = Mid(dtpFechaVenc.Value, 7, 4) + "-" + Mid(dtpFechaVenc.Value, 4, 2) + "-" + Mid(dtpFechaVenc.Value, 1, 2)
+        End If
+
         Dim dtPersonaAdd As DataTable = ObjUniversal.Personas(ViewState("ID"), txtNombreAdd.Text, txtapellidoAdd.Text,
                                                                ddlTipoIdentificacionAdd.SelectedValue, txtNumIdentificacionAdd.Text,
-                                                               txtNumLicencia.Text, dtpFechaVenc.Value, txtTelefonoAdd.Text, 1, ViewState("Accion"))
+                                                               txtNumLicencia.Text, FechaVenc, txtTelefonoAdd.Text, 1, ViewState("Accion"))
         If dtPersonaAdd.Rows(0).Item("Bandera") = "1" Then
             Buscar()
             ObjUniversal.SendNotify(mensaje, 1)
@@ -177,7 +183,7 @@
         txtapellidoAdd.Text = ""
         txtNumIdentificacionAdd.Text = ""
         txtNumLicencia.Text = ""
-        ddlTipoIdentificacionAdd.SelectedValue = "0"
+        ddlTipoIdentificacionAdd.SelectedIndex = 0
         txtTelefonoAdd.Text = ""
         dtpFechaVenc.Value = ""
     End Sub

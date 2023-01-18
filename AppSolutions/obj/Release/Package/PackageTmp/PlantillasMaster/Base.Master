@@ -1,0 +1,190 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Base.master.vb" Inherits="AppSolutions.Base" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+
+    <link rel="shortcut icon" type="image/x-icon" href="../Img/favicon.ico" />
+
+    <title>
+        <asp:ContentPlaceHolder ID="base_title" runat="server">
+            <%--Tab title here--%>
+        </asp:ContentPlaceHolder>
+    </title>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <!-- CERRAR SESION -> Impide el botón atras del navegador -->
+    <script language="javascript" type="text/javascript">
+        javascript: window.history.forward(1);
+    </script>
+    <!-- FIN CERRAR SESION -->
+
+    <script type="text/javascript">
+
+        function SoloMayusculas(txt) {
+            var cadena = document.getElementById(txt).value;
+            return document.getElementById(txt).value = cadena.toUpperCase();
+        }
+
+        function disableCopyPaste(elm) {
+            // Disable cut/copy/paste key events
+            elm.onkeydown = interceptKeys
+
+            // Disable right click events
+            elm.oncontextmenu = function () {
+                return false
+            }
+        }
+
+        function interceptKeys(evt) {
+            evt = evt || window.event // IE support
+            var c = evt.keyCode
+            var ctrlDown = evt.ctrlKey || evt.metaKey // Mac support
+
+            // Check for Alt+Gr (http://en.wikipedia.org/wiki/AltGr_key)
+            if (ctrlDown && evt.altKey) return true
+
+                // Check for ctrl+c, v and x
+            else if (ctrlDown && c == 67) return false // c
+            else if (ctrlDown && c == 86) return false // v
+            else if (ctrlDown && c == 88) return false // x
+
+            // Otherwise allow
+            return true
+        }
+
+        function SoloNumeros(evt) {
+            var keynum;
+            if (window.event) // IE
+            {
+                keynum = evt.keyCode;
+            }
+            else if (evt.which) // Netscape/Firefox/Opera
+            {
+                keynum = evt.which;
+            }
+            return (keynum < 13 || (keynum >= 48 && keynum <= 57))
+        }
+
+        function SoloLetras(e) {
+            tecla = (document.all) ? e.keyCode : e.which;
+            if (tecla == 8) return true;
+            patron = /[A-Za-zñÑ\s]/;
+            te = String.fromCharCode(tecla);
+            return patron.test(te);
+        }
+
+
+        //function seleccionarRadioButton() {
+        //    document.getElementById('ContentPlaceHolder1_rblOpciones_0').checked = 'checked';
+        //}
+
+    </script>
+
+    <style type="text/css">
+        input:required:invalid {
+            border: 1px solid #B40404;
+        }
+
+        input:required:valid {
+            border: 1px solid #298A08;
+        }
+
+        select:required:invalid {
+            border: 1px solid #B40404;
+        }
+
+        select:required:valid {
+            border: 1px solid #298A08;
+        }
+    </style>
+
+
+
+    <!--- Barra de progreso --->
+    <script src="../Js/jquery-1.12.1.min.js" type="text/javascript"></script>
+    <script src="../Js/Common.js" type="text/javascript"></script>
+    <link href="../Css/BlockWindow.css" rel="stylesheet" type="text/css" />
+    <!--- Barra de progreso --->
+
+    <!--Bootstrap 3.3.7-->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/custom_navbar.css" rel="stylesheet" />
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <!-- Fin Bootstrap 3.3.7-->
+
+    <!-- FontAwesome 4.7 -->
+    <link href="../Boot-FontAwesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Fin FontAwesome 4.7 -->
+
+    <link href="../Css/FooterBody.css" rel="stylesheet" />
+    <link href="../css/Card.css" rel="stylesheet" />
+
+    <script src="../dist/sweetalert.min.js"></script>
+    <link href="../dist/sweetalert.css" rel="stylesheet" />
+    <%--<link href="../dist/Facebook.css" rel="stylesheet" />--%>
+    <%--<link href="../dist/Google.css" rel="stylesheet" />--%>
+    <%--<link href="../dist/twitter.css" rel="stylesheet" />--%>
+
+    <%--Paginacion en las gridview--%>
+    <link href="../Css/gridview.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+
+
+    <%-- <%--referencias para aplicar calendarios, horas. "datetimepicker"--%>
+    <%--<script type="text/javascript" src="../Scripts/jquery-1.9.1.min.js"></script>--%>
+    <script type="text/javascript" src="../Scripts/moment.min.js"></script>
+    <%--<script type="text/javascript" src="../Scripts/bootstrap.min.js"></script>--%>
+    <script type="text/javascript" src="../Scripts/bootstrap-datetimepicker.js"></script>
+    <link rel="stylesheet" href="../content/bootstrap-datetimepicker.css" />
+    <!-- include your less or built css files  -->
+    <!-- 
+    bootstrap-datetimepicker-build.less will pull in "../bootstrap/variables.less" and "bootstrap-datetimepicker.less";
+    or
+    <link rel="stylesheet" href="/Content/bootstrap-datetimepicker.css" />
+    -->
+    <%--FIN referencias para aplicar calendarios, horas. "datetimepicker"--%>
+    <link href="../css/TableEmcabezado.css" rel="stylesheet" />
+
+    <asp:ContentPlaceHolder ID="base_head" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+<body onload="HideBlockWindow();" style="background-color: #f9f9fb">
+    <div class="page-wrapper">
+        <div id="BlockWindow" style="display: none;">
+            <div>
+                <img alt="" src="../Img/loading_gif.gif" style="text-align: center; vertical-align: middle; height: 100px; width: 100px;" />
+            </div>
+        </div>
+        <div class="container">
+            <asp:ContentPlaceHolder ID="base_header" runat="server">
+                <%--Main content here--%>
+            </asp:ContentPlaceHolder>
+
+            <asp:ContentPlaceHolder ID="base_pagination" runat="server">
+                <%--Main content here--%>
+            </asp:ContentPlaceHolder>
+
+            <asp:ContentPlaceHolder ID="base_main_content" runat="server">
+                <%--Main content here--%>
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+    <div class="container">
+        <asp:ContentPlaceHolder ID="base_footer" runat="server">
+            <%--Footer Content here--%>
+        </asp:ContentPlaceHolder>
+    </div>
+</body>
+</html>
+

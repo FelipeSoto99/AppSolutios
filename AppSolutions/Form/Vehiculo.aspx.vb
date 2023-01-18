@@ -20,6 +20,10 @@
     End Sub
 
     Public Sub Crear()
+        Dim FechaVencSoat As String = ""
+        Dim FechaVencTecno As String = ""
+        Dim FechaVencRegistroCarga As String = ""
+
         If Trim(txtPlacaAdd.Text) = "" Or Trim(txtCapacidadAdd.Text) = "" Or Trim(TxtSoatAdd.Text) = "" Or Trim(TxtTecnoAdd.Text) = "" Or
             dtpFechaVencSoat.Value = "" Or dtpFechaVencTecno.Value = "" Or dtpFechaVencRegistroCarga.Value = "" Or Trim(txtRegistroCargaAdd.Text) = "" Then
             ObjUniversal.SendNotify("Todos los campos son obligatorios", 3)
@@ -39,8 +43,21 @@
             mensaje = "Se ha modificado los datos del registro con éxito"
         End If
 
+        If Len(Trim(dtpFechaVencSoat.Value)) > 8 Then
+            FechaVencSoat = Mid(dtpFechaVencSoat.Value, 7, 4) + "-" + Mid(dtpFechaVencSoat.Value, 4, 2) + "-" + Mid(dtpFechaVencSoat.Value, 1, 2)
+        End If
+
+        If Len(Trim(dtpFechaVencTecno.Value)) > 8 Then
+            FechaVencTecno = Mid(dtpFechaVencTecno.Value, 7, 4) + "-" + Mid(dtpFechaVencTecno.Value, 4, 2) + "-" + Mid(dtpFechaVencTecno.Value, 1, 2)
+        End If
+
+        If Len(Trim(dtpFechaVencRegistroCarga.Value)) > 8 Then
+            FechaVencRegistroCarga = Mid(dtpFechaVencRegistroCarga.Value, 7, 4) + "-" + Mid(dtpFechaVencRegistroCarga.Value, 4, 2) + "-" + Mid(dtpFechaVencRegistroCarga.Value, 1, 2)
+        End If
+
         Dim dtRutasAdd As DataTable = ObjUniversal.Vehiculo(ViewState("ID"), txtPlacaAdd.Text, txtCapacidadAdd.Text, TxtSoatAdd.Text,
-                                                            dtpFechaVencSoat.Value, TxtTecnoAdd.Text, dtpFechaVencTecno.Value, txtRegistroCargaAdd.Text, dtpFechaVencRegistroCarga.Value, 1, ViewState("Accion"))
+                                                            FechaVencSoat, TxtTecnoAdd.Text, FechaVencTecno, txtRegistroCargaAdd.Text, FechaVencRegistroCarga, 1, ViewState("Accion"))
+
         If dtRutasAdd.Rows(0).Item("Bandera") = "1" Then
             Buscar()
             ObjUniversal.SendNotify(mensaje, 1)

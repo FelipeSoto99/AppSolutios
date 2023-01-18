@@ -168,13 +168,11 @@ Public Class Ruta
 
         End If
 
-        If e.CommandName = "Delete" Then
-
-        End If
     End Sub
 
     Private Sub lbNew_Click(sender As Object, e As EventArgs) Handles lbNew.Click
         RutasAdd()
+        TxtTrayectoAdd.Text = ""
         lbAdd.Text = "Crear"
         lblEvento.Text = "Crear ruta"
         ViewState("Accion") = "Crear"

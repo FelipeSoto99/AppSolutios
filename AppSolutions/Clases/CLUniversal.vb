@@ -240,7 +240,7 @@ Public Class CLUniversal
 
     Public Function ComprobarFormatoNumeros(seLETRASComprobar As String) As Boolean
         Dim sFormato As [String]
-        sFormato = "^[0-9-,]*$"
+        sFormato = "^[0-9-,-.]*$"
         If Regex.IsMatch(seLETRASComprobar, sFormato) Then
             If Regex.Replace(seLETRASComprobar, sFormato, [String].Empty).Length = 0 Then
                 Return True

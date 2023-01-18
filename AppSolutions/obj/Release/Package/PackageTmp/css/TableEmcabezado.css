@@ -1,0 +1,10 @@
+﻿
+th {
+  text-align:center;  
+}
+
+.table > tbody > tr > th{ 
+  vertical-align: middle;  
+}
+
+

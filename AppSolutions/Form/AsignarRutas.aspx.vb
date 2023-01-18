@@ -289,6 +289,7 @@ Public Class AsignarRutaaspx
         lbAdd.Text = "Crear"
         lblEvento.Text = "asiganar ruta"
         ViewState("Accion") = "Crear"
+        txtCantidad.Text = ""
         ScriptManager.RegisterStartupScript(Me, Me.Page.GetType, "FuncionModalaAsignarRuta", "FuncionModalaAsignarRuta();", True)
     End Sub
 
